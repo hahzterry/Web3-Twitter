@@ -2,9 +2,9 @@
 import { ConnectButton, useActiveAccount } from "thirdweb/react";
 import { chain } from "./chain";
 import { client } from "./client";
-import UserStatus from "@/components/UserStatus";
+import UserStatus from "../../components/UserStatus";
+import Footer from "../../components/Footer";
 import { Twitter } from "lucide-react";
-import Footer from "@/components/Footer";
 
 const Home = () => {
   const account = useActiveAccount();
