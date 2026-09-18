@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import { chain } from '@/app/chain'
 import { client } from '@/app/client'
-import { contract } from '../utils/contract'
+import { contract } from '@/utils/contract'
 import { prepareContractCall } from 'thirdweb'
 
 const UserStatus = () => {
