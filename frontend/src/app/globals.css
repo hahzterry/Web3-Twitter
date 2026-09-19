@@ -115,3 +115,88 @@ body {
     display: none !important;
   }
 }
+/* ---------- Sidebar slider ---------- */
+:root {
+  --sidebar-width: 275px;
+  --sidebar-duration: 300ms;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  transition: width var(--sidebar-duration) cubic-bezier(0.2, 0.9, 0.4, 1);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.sidebar[data-closed="true"] {
+  width: 0;
+}
+
+.sidebar[data-closed="true"] .sidebar-inner {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 150ms ease, visibility 150ms ease;
+}
+
+.sidebar-inner {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 200ms ease 100ms;
+}
+
+/* The sliding toggle button */
+.slider-btn {
+  position: fixed;
+  top: 1rem;
+  left: var(--sidebar-width);
+  width: 2.25rem;
+  height: 2.25rem;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: #16181c;
+  border: 1px solid var(--twitter-border);
+  color: #ededed;
+  cursor: pointer;
+  transition: left var(--sidebar-duration) cubic-bezier(0.2, 0.9, 0.4, 1),
+              background 150ms ease;
+}
+
+.slider-btn:hover {
+  background: #1d9bf0;
+  border-color: #1d9bf0;
+  color: #fff;
+}
+
+.slider-btn[data-closed="true"] {
+  left: 0.75rem;
+}
+
+.slider-btn svg {
+  transition: transform var(--sidebar-duration) ease;
+}
+
+.slider-btn[data-closed="true"] svg {
+  transform: rotate(180deg);
+}
+
+/* On mobile, sidebar overlays instead of pushing content */
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    z-index: 30;
+  }
+
+  .slider-btn {
+    left: var(--sidebar-width);
+  }
+
+  .slider-btn[data-closed="true"] {
+    left: 0.75rem;
+  }
+}
